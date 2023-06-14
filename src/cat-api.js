@@ -93,9 +93,9 @@ function renderCat(cats) {
          <img src="${cat.url}" alt="" width = "600px" height="400px">
     </div>
     <div class="info-body">
-        <h2 class="info-title">${cat.breeds.weight.name}</h2>
-        <p class="info-description">${cat.breeds.weight.description}</p>
-        <p class="info-temperament">${cat.breeds.weight.temperament}</p>
+        <h2 class="info-title">${cat.breeds.name}</h2>
+        <p class="info-description">${cat.breeds.description}</p>
+        <p class="info-temperament">${cat.breeds.temperament}</p>
     </div>
 </div>`;
     })
