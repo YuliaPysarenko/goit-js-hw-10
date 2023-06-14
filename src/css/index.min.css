@@ -3,6 +3,15 @@
     opacity: 0;
      visibility: hidden; 
 }
+
+.active_select{
+    opacity: 0;
+        visibility: hidden;
+}
+.active_cat {
+    opacity: 0;
+        visibility: hidden;
+}
 .preloader {
     position: fixed;
     width: 100%;
@@ -13,11 +22,11 @@ justify-content: center;
 align-items: center;
 
 
-background-color: white;
-    z-index: 100;
+/* background-color: white;
+    z-index: 100; */
      transition: 500ms;
-    opacity: 1;
-   visibility: visible;
+    /* opacity: 1;
+   visibility: visible; */
 }
 .loader {
     display: block;
@@ -56,4 +65,12 @@ background-color: white;
     100% {
         background-image: linear-gradient(#FF3D00 20px, transparent 0), linear-gradient(#FF3D00 20px, transparent 0), linear-gradient(#FF3D00 20px, transparent 0), linear-gradient(#FF3D00 20px, transparent 0);
     }
+}
+
+img {
+ box-sizing: border-box;
+    /* padding-left: 0px;  */
+ background-size: cover;
+    object-fit: fill;
+
 }
