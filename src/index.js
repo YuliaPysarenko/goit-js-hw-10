@@ -3,7 +3,7 @@
 
 import catApi from './cat-api';
 import linksDokQuerySel from './links';
-// import infoBreed from '../src/templete/info-breed.hbs';
+
 const link = linksDokQuerySel();
 
 link.breadSelect.addEventListener(`change`, onChangeSelectOption);

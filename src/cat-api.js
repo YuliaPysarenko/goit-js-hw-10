@@ -1,10 +1,11 @@
-// import infoBreed from '../src/templete/info-breed.hbs';
+
 import linksDokQuerySel from './links';
 
 const url = `https://api.thecatapi.com/v1/breeds`;
 const IPA_KEY = `live_SMtLvF4MNZqRFib6He2a90q3TJAniCZuwUyeLjyBQHRzIdcj8BrTbJxdjwHyeiLT`;
 
 const link = linksDokQuerySel();
+
 const preloader = document.querySelector(`.preloader`);
 link.breadSelect.setAttribute(`disabled`, true);
 link.catInfo.setAttribute(`disabled`, true);
@@ -20,7 +21,7 @@ const catInfoId = document.getElementById(`cat_info_id`);
 
 function onLoader() {
   firstLoaderSelect();
- loaderCatInfo();
+//  loaderCatInfo();
 }
 
 function firstLoaderSelect() {
@@ -32,16 +33,16 @@ function firstLoaderSelect() {
     },600)
 }
 
-function loaderCatInfo() {
-   setTimeout(() => {
-     if (preloaderId.classList.contains(`active_loader`)) {
-       if (!catInfoId.classList.contains(`active_cat`)) {
-          catInfoId.classList.add(`active_cat`);
-          link.catInfo.removeAttribute(`disabled`);
-      }
-     }
-    },600)
-}
+// function loaderCatInfo() {
+//    setTimeout(() => {
+//      if (preloaderId.classList.contains(`active_loader`)) {
+//        if (!catInfoId.classList.contains(`active_cat`)) {
+//           catInfoId.classList.add(`active_cat`);
+//           link.catInfo.removeAttribute(`disabled`);
+//       }
+//      }
+//     },600)
+// }
   
 
 function currentTargetSelectCat(e) {
@@ -74,10 +75,10 @@ function fetchBreeds() {
 //                     return data;
 //                 })
 // }
-// https://api.thecatapi.com/v1/images/search?breed_ids=${breedId}&api_key=IPA_KEY
+// https://api.thecatapi.com/v1/images/search?breed_ids=abay&api_key=${IPA_KEY}
 
 function fetchCatByBreed(breedId) {
-       fetch(`https://api.thecatapi.com/v1/images/search?breed_ids=abys&api_key=${IPA_KEY}`)
+       fetch(`https://api.thecatapi.com/v1/images/search?breed_ids=${breedId}&api_key=${IPA_KEY}`)
          .then(resolve => {
                     return resolve.json()
                 }).then(renderCat)
