@@ -11,8 +11,6 @@ link.breadSelect.addEventListener(`change`, onChangeSelectOption);
 catApi.fetchBreeds();
  
 function onChangeSelectOption() {
-//    const curTargBreedCat = e.currentTarget;
-//    catApi.fetchCatByBreed(curTargBreedCat).then(renderCat); 
     const selectedOptionValue = link.breadSelect.value;
        catApi.fetchCatByBreed(selectedOptionValue); 
 //    catApi.fetchCatByBreed(selectedOptionValue).then(renderCat); 
