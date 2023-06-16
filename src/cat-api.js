@@ -43,10 +43,6 @@ function loaderCatInfo() {
     },600)
 }
   
-// function currentTargetSelectCat(e) {
-//   selectId = e.currenttarget;
-// }
-
 function fetchBreeds() {
   
     fetch(`https://api.thecatapi.com/v1/breeds?api_key=${IPA_KEY}`)
