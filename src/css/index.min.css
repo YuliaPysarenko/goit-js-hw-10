@@ -1,17 +1,21 @@
-.active_loader {
+ .error_fetch {
+    opacity: 0;
+    visibility: hidden;
+}
+ .active_loader {
    
     opacity: 0;
      visibility: hidden; 
-}
+} 
 
-.active_select{
+/* .active_select{
     opacity: 0;
-        visibility: hidden;
+    visibility: hidden;
 }
 .active_cat {
     opacity: 0;
         visibility: hidden;
-}
+}  */
 .preloader {
     position: fixed;
     width: 100%;
