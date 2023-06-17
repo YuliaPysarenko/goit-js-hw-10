@@ -1,6 +1,21 @@
+ .breed-select {
+    margin-bottom: 20px;
+ }
+ 
+ .info-body {
+    width: 600px;
+    height: 400px;
+  
+ }
+.span-temperament {
+font-weight: bold;
+}
  .error_fetch {
     opacity: 0;
     visibility: hidden;
+
+    /* opacity: 1;
+    visibility: visible; */
 }
  .active_loader {
    
@@ -8,14 +23,6 @@
      visibility: hidden; 
 } 
 
-/* .active_select{
-    opacity: 0;
-    visibility: hidden;
-}
-.active_cat {
-    opacity: 0;
-        visibility: hidden;
-}  */
 .preloader {
     position: fixed;
     width: 100%;

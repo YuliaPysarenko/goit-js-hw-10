@@ -1,26 +1,18 @@
-
+import { Notify } from 'notiflix/build/notiflix-notify-aio';
 import linksDokQuerySel from './links';
 
-const url = `https://api.thecatapi.com/v1/breeds`;
 const IPA_KEY = `live_SMtLvF4MNZqRFib6He2a90q3TJAniCZuwUyeLjyBQHRzIdcj8BrTbJxdjwHyeiLT`;
-
 const link = linksDokQuerySel();
+const preloaderId = document.getElementById(`preloader_id`)
 
-// const preloader = document.querySelector(`.preloader`);
+window.addEventListener(`load`, onLoader);
 
 link.breadSelect.setAttribute(`disabled`, true);
 link.catInfo.setAttribute(`disabled`, true);
 // link.error.setAttribute(`disabled`, true);
 
-window.addEventListener(`load`, onLoader);
-
-const preloaderId = document.getElementById(`preloader_id`)
-const selectId = document.getElementById(`id_select`);
-const catInfoId = document.getElementById(`cat_info_id`);
-
 function onLoader() {
  firstLoaderSelect();
- loaderCatInfo();
 }
 
 function firstLoaderSelect() {
@@ -31,20 +23,9 @@ function firstLoaderSelect() {
       }
     },600)
 }
-
-function loaderCatInfo() {
-   setTimeout(() => {
-     if (preloaderId.classList.contains(`active_loader`)) {
-       if (!catInfoId.classList.contains(`active_cat`)) {
-          catInfoId.classList.add(`active_cat`);
-          link.catInfo.removeAttribute(`disabled`);
-      }
-     }
-    },600)
-}
   
 function fetchBreeds() {
-  
+
     fetch(`https://api.thecatapi.com/v1/breeds?api_key=${IPA_KEY}`)
         .then(resolve => {
             return resolve.json()
@@ -60,12 +41,19 @@ function fetchBreeds() {
 }
 
 function fetchCatByBreed(breedId) {
- 
-       fetch(`https://api.thecatapi.com/v1/images/search?breed_ids=${breedId}&api_key=${IPA_KEY}`)
-         .then(resolve => {
-                    return resolve.json()
-                }).then(renderCat).catch(errorFetchBreeds)
-} 
+  link.catInfo.innerHTML = ''
+  preloaderId.classList.remove(`active_loader`);
+  
+  fetch(
+    `https://api.thecatapi.com/v1/images/search?breed_ids=${breedId}&api_key=${IPA_KEY}`
+  )
+    .then(resolve => {
+      return resolve.json();
+    })
+    .then(renderCat)
+    .catch(errorFetchBreeds)
+    .finally(() => preloaderId.classList.add(`active_loader`));
+}
          
 function renderCat(cats) {
   const markup = cats
@@ -78,23 +66,17 @@ function renderCat(cats) {
     <div class="info-body">
     <h2 class="info-title">${cat.breeds[0].name}</h2>
         <p class="info-description">${cat.breeds[0].description}</p>
-        <p class="info-temperament">${cat.breeds[0].temperament}</p>
+        <p class="info-temperament"><span class="span-temperament">Temperament:</span> ${cat.breeds[0].temperament}</p>
     </div>
 </div>`;
     })
     .join(""); 
   link.catInfo.innerHTML = markup;
-
 }
 
-
-if (!errorFetchBreeds) {
-  link.error.setAttribute(` disabled`, true);
-}
-
-function errorFetchBreeds(error) {
-  link.error.removeAttribute(`disabled`); 
-  console.log(error)
+function errorFetchBreeds() {
+  // Notify.failure(link.error.removeAttribute(`disabled`)
+      Notify.failure (`Oops! Something went wrong! Try reloading the page!`);
 }
 
 export default { fetchBreeds, fetchCatByBreed, renderCat, errorFetchBreeds}
