@@ -27,8 +27,11 @@ function firstLoaderSelect() {
 function fetchBreeds() {
 
     fetch(`https://api.thecatapi.com/v1/breeds?api_key=${IPA_KEY}`)
-        .then(resolve => {
-            return resolve.json()
+        .then(response => {
+          if (!response.ok) {
+            throw new Error(response.status);
+        }
+            return response.json()
         })
         .then((breed) => {
             for (let i = 0; i < breed.length; i++) {
@@ -47,8 +50,11 @@ function fetchCatByBreed(breedId) {
   fetch(
     `https://api.thecatapi.com/v1/images/search?breed_ids=${breedId}&api_key=${IPA_KEY}`
   )
-    .then(resolve => {
-      return resolve.json();
+    .then(response => {
+      if (!response.ok) {
+            throw new Error(response.status);
+        } 
+      return response.json(); 
     })
     .then(renderCat)
     .catch(errorFetchBreeds)
