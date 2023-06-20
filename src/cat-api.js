@@ -9,7 +9,6 @@ window.addEventListener(`load`, onLoader);
 
 link.breadSelect.setAttribute(`disabled`, true);
 link.catInfo.setAttribute(`disabled`, true);
-// link.error.setAttribute(`disabled`, true);
 
 function onLoader() {
  firstLoaderSelect();
