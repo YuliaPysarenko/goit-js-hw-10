@@ -80,7 +80,6 @@ function renderCat(cats) {
 }
 
 function errorFetchBreeds() {
-  // Notify.failure(link.error.removeAttribute(`disabled`)
       Notify.failure (`Oops! Something went wrong! Try reloading the page!`);
 }
 
